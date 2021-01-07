@@ -1,4 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Fast Feedback is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It is the project built during Lee Robinson's [React 2025](https://react2025.com/) course.
+
+[Demo link](https://fastfeedback-black.vercel.app/)
+
+Stack:
+  * Next.js
+  * Firebase
+  * Chakra UI
 
 ## Getting Started
 

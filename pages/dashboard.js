@@ -9,8 +9,6 @@ const Dashboard = () => {
     return "...Loading";
   }
 
-  console.log(auth.user);
-
   return <EmptyState />;
 };
 

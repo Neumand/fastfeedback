@@ -38,7 +38,7 @@ const DashboardShell = ({ children }) => {
         <Flex maxW="800px" w="100%" direction="column" ml="auto" mr="auto">
           <Breadcrumb>
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink color="black">Sites</BreadcrumbLink>
+              <BreadcrumbLink color="gray.700">Sites</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
           <Heading mb={4} color="black">

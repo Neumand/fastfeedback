@@ -31,7 +31,7 @@ const DashboardShell = ({ children }) => {
         </Stack>
         <Flex alignItems="center">
           <Link mr={4}>Account</Link>
-          <Avatar size="sm" src={user.photoUrl} />
+          <Avatar size="sm" src={user?.photoUrl} />
         </Flex>
       </Flex>
       <Flex backgroundColor="gray.100" p={8} h="100vh">

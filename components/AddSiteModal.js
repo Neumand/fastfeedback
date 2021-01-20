@@ -61,12 +61,12 @@ const AddSiteModal = () => {
               <Input
                 id="site-input"
                 placeholder="My site"
-                name="name"
+                name="site"
                 ref={register({
                   required: "Required",
                 })}
               />
-              {errors.name && <Text color="red.500">{errors.name.message}</Text>}
+              {errors.site && <Text color="red.500">{errors.site.message}</Text>}
             </FormControl>
 
             <FormControl mt={4}>

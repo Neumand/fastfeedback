@@ -14,8 +14,9 @@ import {
   Input,
   Text,
   useDisclosure,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
+import { mutate } from "swr";
 
 import { createSite } from "@lib/db";
 import { useAuth } from "@lib/auth";
@@ -28,12 +29,13 @@ const AddSiteModal = ({ children }) => {
   const toast = useToast();
 
   const onCreateSite = ({ name, url }) => {
-    createSite({
+    const newSite = {
       author: user.uid,
       createdAt: new Date().toISOString(),
       name,
       url,
-    });
+    };
+    createSite(newSite);
     onClose();
     toast({
       title: "Success!",
@@ -42,11 +44,20 @@ const AddSiteModal = ({ children }) => {
       duration: 5000,
       isClosable: true,
     });
+    mutate("/api/sites", async ({ sites }) => {
+      return { sites: [...sites, newSite] };
+    }, false);
   };
 
   return (
     <>
-      <Button fontWeight="medium" maxW="200px" onClick={onOpen}>
+      <Button
+        backgroundColor="gray.900"
+        color="white"
+        fontWeight="medium"
+        _hover={{ bg: "gray.700" }}
+        _active={{ bg: "gray.800", transform: "scale(0.95)" }}
+        onClick={onOpen}>
         {children}
       </Button>
 

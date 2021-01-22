@@ -20,18 +20,18 @@ import {
 import { createSite } from "@lib/db";
 import { useAuth } from "@lib/auth";
 
-const AddSiteModal = () => {
+const AddSiteModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { user } = useAuth();
   const initialRef = useRef();
   const { register, handleSubmit, errors } = useForm();
   const toast = useToast();
 
-  const onCreateSite = ({ site, url }) => {
+  const onCreateSite = ({ name, url }) => {
     createSite({
       author: user.uid,
       createdAt: new Date().toISOString(),
-      site,
+      name,
       url,
     });
     onClose();
@@ -47,7 +47,7 @@ const AddSiteModal = () => {
   return (
     <>
       <Button fontWeight="medium" maxW="200px" onClick={onOpen}>
-        Add Your First Site
+        {children}
       </Button>
 
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
@@ -61,7 +61,7 @@ const AddSiteModal = () => {
               <Input
                 id="site-input"
                 placeholder="My site"
-                name="site"
+                name="name"
                 ref={register({
                   required: "Required",
                 })}

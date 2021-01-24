@@ -1,13 +1,14 @@
-import db from "@lib/firebase-admin";
+import { getAllSites } from "@lib/db-admin";
 
+/**
+ * @param {Response} res
+ */
 export default async (_, res) => {
   try {
-    const snapshot = await db.collection("sites").get();
-    const sites = [];
-    snapshot.forEach(doc => sites.push({ id: doc.id, ...doc.data() }));
+    const sites = await getAllSites();
     res.json({ sites });
   } catch (error) {
-    console.error(`Error fetching document: ${error}`);
+    console.error(`Error fetching sites: ${error}`);
     return;
   }
 };

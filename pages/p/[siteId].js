@@ -1,12 +1,8 @@
+import Feedback from "@components/Feedback";
 import { getAllFeedback, getAllSites } from "@lib/db-admin";
 
 const SiteFeedback = ({ initialFeedback }) => {
-  return initialFeedback.map(feedback => (
-    <div key={feedback.authorId}>
-      <h1>{feedback.author}</h1>
-      <p>{feedback.text}</p>
-    </div>
-  ));
+  return initialFeedback.map(feedback => <Feedback key={feedback.id} {...feedback} />);
 };
 
 export async function getStaticProps(context) {

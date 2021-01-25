@@ -1,4 +1,4 @@
-const { Flex, Link } = require("@chakra-ui/react");
+import { Flex, Link } from "@chakra-ui/react";
 
 const FeedbackLink = ({ siteId }) => {
   return (

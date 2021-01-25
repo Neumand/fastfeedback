@@ -5,12 +5,12 @@ import { getAllFeedback } from "@lib/db-admin";
  * @param {Response} res
  */
 export default async (req, res) => {
-  try {
-    const siteId = req.query.siteId;
-    const { feedback } = await getAllFeedback(siteId);
-    res.status(200).json({ feedback });
-  } catch (error) {
-    console.error(`Error fetching feedback: ${error}`);
-    return res.status(500).json({ error });
+  const siteId = req.query.siteId;
+  const { feedback, error } = await getAllFeedback(siteId);
+
+  if (error) {
+    res.status(500).json({ error });
   }
+
+  res.status(200).json({ feedback });
 };

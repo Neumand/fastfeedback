@@ -1,4 +1,5 @@
 import React from "react";
+import NextLink from "next/link";
 import {
   Avatar,
   Button,
@@ -23,9 +24,15 @@ const DashboardShell = ({ children }) => {
         py={4}
         px={8}>
         <Stack isInline spacing={4}>
-          <LogoIcon color="black" boxSize="24px" />
-          <Link>Feedback</Link>
-          <Link>Sites</Link>
+          <NextLink href="/" passHref>
+            <LogoIcon color="black" boxSize="24px" />
+          </NextLink>
+          <NextLink href="/dashboard" passHref>
+            <Link>Sites</Link>
+          </NextLink>
+          <NextLink href="/feedback" passHref>
+            <Link>Feedback</Link>
+          </NextLink>
         </Stack>
         <Flex justifyContent="center" alignItems="center">
           {user && (

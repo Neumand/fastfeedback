@@ -14,6 +14,7 @@ export default function Home() {
       direction="column"
       justifyContent="center"
       alignItems="center"
+      backgroundColor="#edf2f7"
       h="100vh"
       w="100vw">
       <Head>
@@ -36,10 +37,11 @@ export default function Home() {
         <>
           <Button
             mt={4}
+            maxW="243px"
             size="lg"
             backgroundColor="gray.900"
             color="white"
-            leftIcon={<GithubIcon />}
+            leftIcon={<GithubIcon w={8} h={8} />}
             fontWeight="medium"
             onClick={() => auth.signinWithGithub()}
             _hover={{ bg: "gray.700" }}
@@ -48,6 +50,7 @@ export default function Home() {
           </Button>
           <Button
             mt={4}
+            maxW="243px"
             size="lg"
             backgroundColor="white"
             color="gray.900"

@@ -28,6 +28,7 @@ const SiteFeedback = ({ initialFeedback }) => {
       createdAt: new Date().toISOString(),
     };
 
+    inputRef.current.value = "";
     setAllFeedback([newFeedback, ...allFeedback]);
     createFeedback(newFeedback);
   };
@@ -38,7 +39,7 @@ const SiteFeedback = ({ initialFeedback }) => {
         <FormControl mt={8}>
           <FormLabel htmlFor="comment">Comment</FormLabel>
           <Input ref={inputRef} type="comment" id="comment"></Input>
-          <Button type="submit" size="sm" fontWeight="medium" mt={2}>
+          <Button type="submit" isDisabled={router.isFallback} size="sm" fontWeight="medium" mt={2}>
             Add comment
           </Button>
         </FormControl>
@@ -57,7 +58,7 @@ export async function getStaticProps(context) {
     props: {
       initialFeedback: feedback,
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 
@@ -70,7 +71,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
